@@ -30,21 +30,20 @@ class MainActivity : ComponentActivity() {
 
                 val newsViewModel : ListNewsViewModel = hiltViewModel()
 
-                newsViewModel
 
                 lifecycleScope.launchWhenCreated {
                     Log.d("DATA", "START")
 
-                   // newsViewModel.getListNews().collect{ articles ->
+                    newsViewModel.getListNews().collect{ articles ->
 
-//                        articles.forEach {article ->
-//                                Log.d("DATA", article.toString())
-//
-//                        }
+                        articles.forEach {article ->
+                                Log.d("DATA", article.toString())
+
+                        }
 
                     }
 
-               // }
+               }
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),

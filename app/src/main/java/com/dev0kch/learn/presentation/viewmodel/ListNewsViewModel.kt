@@ -16,9 +16,7 @@ class ListNewsViewModel @Inject constructor(
     private val repositoryImpl: NewsRepositoryImpl
 ) : ViewModel() {
 
-    init {
-        getListNews()
-    }
+
     fun getListNews(): Flow<List<Article>> = flow<List<Article>> {
         emit(
             repositoryImpl.getEverythings(
@@ -27,7 +25,6 @@ class ListNewsViewModel @Inject constructor(
                 "publishedAt",
                 WSConfiguration.API_KEY
             ).articles.map { article ->
-
                 article.toArticle() }
         )
     }
