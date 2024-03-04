@@ -12,3 +12,5 @@ val fackArticle = Article(
     source = null,
     content = "We know it's a hassle to switch browsers but we want your experience with CNA to be fast, secure and the best it can possibly be.\r\nTo continue, upgrade to a supported browser or, for the finest exper… [+30 chars]"
 )
+
+

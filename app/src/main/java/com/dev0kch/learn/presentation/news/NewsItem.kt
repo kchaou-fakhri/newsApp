@@ -2,7 +2,6 @@ package com.dev0kch.learn.presentation.news
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,15 +9,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import com.dev0kch.learn.R
@@ -34,28 +36,22 @@ fun NewsItem(article: Article) {
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .height(Constants.NewsItemHeight)
-            .padding(Constants.Padding.SmallPadding)
+            .height(Constants.Width.MediumXXX)
+            .padding(top = Constants.Padding.MediumPadding)
     ) {
 
         Column(
             modifier = Modifier
                 .weight(1f)
-                .height(Constants.NewsItemHeight)
+                .height(Constants.Width.MediumXXX)
         ) {
             AsyncImage(
-                model = article,
+                model = article.image,
                 contentDescription = null,
-                contentScale = ContentScale.Inside,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .border(
-                        width = Constants.smallBorder,
-                        color = Color.Transparent,
-                        shape = RoundedCornerShape(
-                            Constants.ImageRoundedCorner
-                        )
-                    )
                     .fillMaxSize()
+                    .clip(RoundedCornerShape(Constants.ImageRoundedCorner))
 
 
             )
@@ -63,12 +59,15 @@ fun NewsItem(article: Article) {
 
 
         Column(
+            verticalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .weight(2f)
-                .height(Constants.NewsItemHeight)
+                .weight(2.5f)
+                .padding(start = Constants.Padding.MediumPadding)
+
+                .height(Constants.Width.MediumXXX)
         ) {
             Text(
-                text = article.author ?: "Adam Smith",
+                text = article.author ?: stringResource(id = R.string.app_name),
                 fontSize = Constants.Text.H5,
                 color = colorResource(id = R.color.text_color)
             )
@@ -78,6 +77,7 @@ fun NewsItem(article: Article) {
                 text = refactoringText(article.title, 60),
                 fontSize = Constants.Text.H4,
                 maxLines = 2,
+                lineHeight = Constants.Text.H3,
                 color = colorResource(id = R.color.text_color)
             )
 
@@ -91,8 +91,8 @@ fun NewsItem(article: Article) {
         }
         Column(
             modifier = Modifier
-                .weight(1f)
-                .height(Constants.NewsItemHeight),
+                .width(Constants.Width.Medium)
+                .height(Constants.Width.MediumXXX),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.End
         ) {

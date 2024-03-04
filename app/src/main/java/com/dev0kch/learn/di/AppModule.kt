@@ -30,4 +30,5 @@ object AppModule {
     fun provideRepository(newsApi: NewsApi): NewsRepositoryImpl {
         return NewsRepositoryImpl(newsApi)
     }
+
 }
