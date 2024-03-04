@@ -10,7 +10,8 @@ interface NewsApi {
         @Query("q") query: String,
         @Query("date") date: String,
         @Query("sortBy") sortBy: String,
-        @Query("apiKey") apiKey: String
+        @Query("apiKey") apiKey: String,
+        @Query("pageSize") pageSize: String?="25"
     ) : ResponseDto
 }
 
