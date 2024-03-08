@@ -1,5 +1,7 @@
 package com.dev0kch.learn.common
 
+import com.dev0kch.learn.utils.Constants
+import com.dev0kch.learn.utils.fackUrl
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -27,9 +29,30 @@ fun refactoringDate(inputDate: String?): String {
         val dayOfMonth = dateTime.dayOfMonth
         val year = dateTime.year
 
-        refactDate = "${dayOfWeek.toString().substring(0, 3).lowercase().replaceFirstChar(Char::uppercase) }, $dayOfMonth ${
+        refactDate = "${
+            dayOfWeek.toString().substring(0, 3).lowercase().replaceFirstChar(Char::uppercase)
+        }, $dayOfMonth ${
             month.toString().substring(0, 3).lowercase().replaceFirstChar(Char::uppercase)
         } $year"
     }
     return refactDate
+}
+
+fun checkImage(urlImage: String?): String {
+    var generateUrl: String? = urlImage
+    if (!urlImage.isNullOrBlank()) {
+        if (Constants.unAcceptedImageType.contains(
+                urlImage.substring(
+                    urlImage.length - 4,
+                    urlImage.length
+                )
+            )
+        ) {
+            generateUrl = fackUrl
+        }
+    } else {
+        generateUrl = fackUrl
+    }
+
+    return generateUrl!!
 }

@@ -1,4 +1,4 @@
-package com.dev0kch.learn.presentation.news
+package com.dev0kch.learn.presentation.news.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import com.dev0kch.learn.R
+import com.dev0kch.learn.common.checkImage
 import com.dev0kch.learn.common.refactoringDate
 import com.dev0kch.learn.common.refactoringText
 import com.dev0kch.learn.domain.model.Article
@@ -46,12 +47,12 @@ fun NewsItem(article: Article) {
                 .height(Constants.Width.MediumXXX)
         ) {
             AsyncImage(
-                model = article.image,
+                model = checkImage(article.image),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxSize()
-                    .clip(RoundedCornerShape(Constants.ImageRoundedCorner))
+                    .clip(RoundedCornerShape(Constants.RoundedCorner.ImageRoundedCorner))
 
 
             )
@@ -61,7 +62,7 @@ fun NewsItem(article: Article) {
         Column(
             verticalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .weight(2.5f)
+                .weight(2.7f)
                 .padding(start = Constants.Padding.MediumPadding)
 
                 .height(Constants.Width.MediumXXX)
