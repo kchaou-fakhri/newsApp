@@ -16,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ListNewsViewModel @Inject constructor(
-    private val getNewsUseCase: GetNewsUseCase
+    private val getNewsUseCase: GetNewsUseCase,
+
 ) : ViewModel() {
 
     private val _state = mutableStateOf(NewsState())

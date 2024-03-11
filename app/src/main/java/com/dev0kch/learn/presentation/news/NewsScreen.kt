@@ -13,8 +13,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.dev0kch.learn.presentation.navigation.Configuration
+import com.dev0kch.learn.presentation.navigation.Route
 import com.dev0kch.learn.presentation.news.components.CategoryItem
 import com.dev0kch.learn.presentation.news.components.NewsItem
 import com.dev0kch.learn.presentation.news.components.TopNewsItem
@@ -23,6 +25,7 @@ import com.dev0kch.learn.utils.Constants
 
 @Composable
 fun NewsScreen(
+    navController: NavHostController,
     newsViewModel: ListNewsViewModel = hiltViewModel()
 ) {
     val state = newsViewModel.state.value
@@ -38,7 +41,14 @@ fun NewsScreen(
                 .padding(Constants.Padding.MediumPadding, bottom = Constants.Padding.MediumPadding)
         ) {
             items(state.data) { article ->
-                TopNewsItem(article)
+                TopNewsItem(article) {
+                    navController.currentBackStackEntry?.savedStateHandle?.set(
+                        key = Configuration.ARTICLE_PARAM,
+                        value = article
+                    )
+
+                    navController.navigate(route = Route.DetailsScreen.route )
+                }
             }
         }
 
@@ -70,8 +80,3 @@ fun NewsScreen(
 }
 
 
-@Preview
-@Composable
-fun NewsScreenPreview() {
-    NewsScreen()
-}

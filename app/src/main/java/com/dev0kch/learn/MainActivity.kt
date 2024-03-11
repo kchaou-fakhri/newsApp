@@ -7,7 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.dev0kch.learn.presentation.news.NewsScreen
+import com.dev0kch.learn.presentation.navigation.HomeNavigation
+import com.dev0kch.learn.presentation.navigation.Route
 import com.dev0kch.learn.ui.theme.LearnTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NewsScreen()
+                    HomeNavigation(startDestination = Route.HomeScreen.route)
 
                 }
             }
