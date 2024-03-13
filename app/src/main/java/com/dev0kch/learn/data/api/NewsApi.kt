@@ -11,7 +11,8 @@ interface NewsApi {
         @Query("date") date: String,
         @Query("sortBy") sortBy: String,
         @Query("apiKey") apiKey: String,
-        @Query("pageSize") pageSize: String?="25"
-    ) : ResponseDto
+        @Query("pageSize") pageSize: String? = "25",
+        @Query("language") language: String? = "en"
+    ): ResponseDto
 }
 
