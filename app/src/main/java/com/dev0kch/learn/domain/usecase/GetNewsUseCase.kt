@@ -3,8 +3,8 @@ package com.dev0kch.learn.domain.usecase
 import com.dev0kch.learn.common.Resource
 import com.dev0kch.learn.configuration.WSConfiguration
 import com.dev0kch.learn.data.model.dto.toArticle
-import com.dev0kch.learn.data.repository.remote.NewsRepositoryImpl
 import com.dev0kch.learn.domain.model.Article
+import com.dev0kch.learn.domain.repository.NewsApiRepository
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.Flow
 import java.io.IOException
@@ -12,7 +12,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 class GetNewsUseCase @Inject constructor(
-    private val repository: NewsRepositoryImpl
+    private val repository: NewsApiRepository
 ) {
     operator fun invoke(): Flow<Resource<List<Article>>> = flow {
         try {

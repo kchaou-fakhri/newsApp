@@ -1,6 +1,5 @@
 package com.dev0kch.learn.presentation.viewmodel
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -30,7 +29,6 @@ class ListNewsViewModel @Inject constructor(
     private fun getListNews() {
         getNewsUseCase().onEach { result ->
 
-            Log.println(Log.ASSERT, "DTET", result.toString())
             when (result) {
                 is Resource.Loading -> {
                     _state.value = NewsState(loading = true)
