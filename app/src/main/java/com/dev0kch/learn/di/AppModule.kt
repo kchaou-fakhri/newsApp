@@ -3,6 +3,7 @@ package com.dev0kch.learn.di
 import com.dev0kch.learn.configuration.WSConfiguration
 import com.dev0kch.learn.data.api.NewsApi
 import com.dev0kch.learn.data.repository.remote.NewsRepositoryImpl
+import com.dev0kch.learn.domain.repository.NewsApiRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,7 +28,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRepository(newsApi: NewsApi): NewsRepositoryImpl {
+    fun provideRepository(newsApi: NewsApi): NewsApiRepository {
         return NewsRepositoryImpl(newsApi)
     }
 

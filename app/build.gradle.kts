@@ -74,6 +74,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     testImplementation("com.google.truth:truth:1.4.2")  // truth testing library
     androidTestImplementation("com.google.truth:truth:1.4.2")  // truth testing library
+    testImplementation("android.arch.core:core-testing:1.1.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")
 
 
     // viewModel compose

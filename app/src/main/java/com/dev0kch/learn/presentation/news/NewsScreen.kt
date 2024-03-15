@@ -1,6 +1,7 @@
 package com.dev0kch.learn.presentation.news
 
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,7 +31,7 @@ fun NewsScreen(
     sharedViewModel: SharedViewModel
 ) {
     val state = newsViewModel.state.value
-
+    Log.d("data", state.data.toString())
 
     Column(modifier = Modifier.fillMaxSize()) {
 
