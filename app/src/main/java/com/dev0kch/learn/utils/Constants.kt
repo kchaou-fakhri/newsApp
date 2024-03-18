@@ -90,4 +90,11 @@ object Constants {
     val unAcceptedImageType = listOf<String>("sl=1", "webp")
 
 
+    object ContentDescription {
+        object NewsItem {
+            val Image = "News Image"
+            val BookMarkIcon = "Book Mark Icon"
+        }
+    }
+
 }

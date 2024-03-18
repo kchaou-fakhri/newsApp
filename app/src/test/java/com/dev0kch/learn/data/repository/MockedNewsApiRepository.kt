@@ -1,4 +1,4 @@
-package com.dev0kch.learn.repository
+package com.dev0kch.learn.data.repository
 
 import com.dev0kch.learn.data.model.dto.ResponseDto
 import com.dev0kch.learn.domain.repository.NewsApiRepository
