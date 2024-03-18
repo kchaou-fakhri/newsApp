@@ -48,7 +48,7 @@ fun NewsItem(article: Article) {
         ) {
             AsyncImage(
                 model = checkImage(article.image),
-                contentDescription = null,
+                contentDescription = Constants.ContentDescription.NewsItem.Image,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxSize()
@@ -97,7 +97,7 @@ fun NewsItem(article: Article) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.End
         ) {
-            Image(painter = painterResource(id = R.drawable.ic_bookmark), contentDescription = null)
+            Image(painter = painterResource(id = R.drawable.ic_bookmark), contentDescription = Constants.ContentDescription.NewsItem.BookMarkIcon)
         }
     }
 }

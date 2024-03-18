@@ -4,10 +4,15 @@ plugins {
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
+}
 
+apply {
+   from("$rootDir/jacoco.gradle")
+   // from("$rootDir/kcover.kt")
 }
 
 android {
+
     namespace = "com.dev0kch.learn"
     compileSdk = 34
 
@@ -18,7 +23,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.dev0kch.learn.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -31,6 +36,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+
+        debug {
+            enableUnitTestCoverage = true
+
         }
     }
     compileOptions {
@@ -51,7 +61,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
+
 
 dependencies {
 
@@ -75,8 +87,10 @@ dependencies {
     testImplementation("com.google.truth:truth:1.4.2")  // truth testing library
     androidTestImplementation("com.google.truth:truth:1.4.2")  // truth testing library
     testImplementation("android.arch.core:core-testing:1.1.1")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")
-
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.37")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.11.0")
 
     // viewModel compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
@@ -95,9 +109,14 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.6.0")
 
 
+
 }
 
 // Allow references to generated code
 kapt {
     correctErrorTypes = true
 }
+
+
+
+
