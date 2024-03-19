@@ -1,15 +1,18 @@
+import com.android.build.api.dsl.JacocoOptions
+import com.android.build.api.dsl.TestCoverage
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
+    id("jacoco")
+    id ("kover")
+
 }
 
-apply {
-   from("$rootDir/jacoco.gradle")
-   // from("$rootDir/kcover.kt")
-}
+
 
 android {
 
@@ -28,6 +31,8 @@ android {
             useSupportLibrary = true
         }
     }
+
+
 
     buildTypes {
         release {
@@ -118,5 +123,16 @@ kapt {
 }
 
 
+
+jacoco {
+    toolVersion = "0.8.7"
+
+}
+
+
+apply {
+    //from("$rootDir/jacoco.gradle")
+     //from("$rootDir/kcover.kt")
+}
 
 
